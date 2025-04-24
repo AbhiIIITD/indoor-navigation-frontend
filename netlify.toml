@@ -1,9 +1,16 @@
+# netlify.toml
 [build]
-  publish = ".next"        # or .next, depending on your setup
-  command = "npm run build"
+  command   = "npm run build"
+  publish   = ".next"            # or "out" if you're exporting static
+  functions = ".netlify/functions"
 
+# Only if you also installed the Next.js plugin; you don’t need this for a plain static + redirects site:
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Redirect /api/* → your laptop
 [[redirects]]
-  from = "/api/*"
-  to   = "http://192.168.45.162:3000/api/:splat"
-  status = 200
-  force = true
+  from     = "/api/*"
+  to       = "http://192.168.45.162:8000/:splat"
+  status   = 200
+  force    = true
