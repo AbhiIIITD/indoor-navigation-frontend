@@ -1,0 +1,9 @@
+[build]
+  publish = ".next"        # or .next, depending on your setup
+  command = "npm run build"
+
+[[redirects]]
+  from = "/api/*"
+  to   = "http://192.168.45.162:3000/api/:splat"
+  status = 200
+  force = true
